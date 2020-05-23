@@ -1,0 +1,13 @@
+python xml_to_csv.py -i ../../workspace/training_demo/images/train -o ../../workspace/training_demo/annotations/train_labels.csv
+
+python xml_to_csv.py -i ../../workspace/training_demo/images/test -o ../../workspace/training_demo/annotations/test_labels.csv
+
+python generate_tfrecord.py --label=resin --csv_input=../../workspace/training_demo/annotations/train_labels.csv --img_path=../../workspace/training_demo/images/train  --output_path=../../workspace/training_demo/annotations/train.record
+
+python generate_tfrecord.py --label=resin --csv_input=../../workspace/training_demo/annotations/test_labels.csv --img_path=../../workspace/training_demo/images/test  --output_path=../../workspace/training_demo/annotations/test.record
+
+# Optional
+# from Tensorflow/models/research
+export PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/slim
+
+python model_main.py --alsologtostderr --model_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_resnet_v2.config
