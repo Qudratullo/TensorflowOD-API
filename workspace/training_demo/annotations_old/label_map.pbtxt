@@ -1,0 +1,9 @@
+item {
+    id: 1
+    name: 'full_resin'
+}
+
+item {
+    id: 2
+    name: 'destroyed_resin'
+}
