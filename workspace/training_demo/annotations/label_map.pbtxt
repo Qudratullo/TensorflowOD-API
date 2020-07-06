@@ -1,9 +1,5 @@
 item {
     id: 1
-    name: 'full_resin'
+    name: 'resin'
 }
 
-item {
-    id: 2
-    name: 'destroyed_resin'
-}
